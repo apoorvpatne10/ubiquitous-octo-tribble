@@ -1,0 +1,31 @@
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Example file input</label>
+      <input ng2FileSelect  type="file" 
+            class="form-control-file" 
+            id="exampleFormControlFile1"
+            [uploader]="uploader"
+            name="file">
+    </div>
+
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  </form>
+
+<br>
+
+<div *ngIf="rowData.length !== 0; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <h2>File uploaded</h2>
+
+    <ag-grid-angular
+    style="width: 800px; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    >    
+    </ag-grid-angular>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2>File not uploaded yet lmao</h2>
+</ng-template>
